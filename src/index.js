@@ -4,6 +4,7 @@ import './index.css'
 import {
   Provider
 } from 'react-redux'
+import { AuthContextProvider } from 'contexts/authContext'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './styles/all.sass'
@@ -15,9 +16,9 @@ import {
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
+    <AuthContextProvider>
       <App />
-    </React.StrictMode>
+    </AuthContextProvider>
   </Provider>
 )
 

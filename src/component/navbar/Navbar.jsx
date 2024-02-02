@@ -23,7 +23,7 @@ export default function Navbar() {
     <div className={styles.navbar}>
       {linkList.map((link, index) => (
         <Link
-          key={index}
+          key={`${index.toString()}`}
           to={link.to}
           className={clsx(styles.link, location.pathname === `${link.to}` && styles.active)}
         >
