@@ -1,0 +1,36 @@
+.root
+  z-index: 1
+  width: 100%
+  position: absolute
+  top: 0
+  left: 0
+  padding: 1.4rem 0
+  .header
+    max-width: 1660px
+    margin: auto
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 2rem
+    .leftContent
+      display: flex
+      .logo
+        color: #fff
+        letter-spacing: 2px
+        position: relative
+        &::after, &::before
+          content: ''
+          position: absolute
+          left: -1px
+          width: 100%
+          height: 2px
+          background: #fff
+        &::after
+          top: -7px
+        &::before
+          bottom: -7px
+    .rightContent
+      .iconBtn
+        width: 40px
+        .iconImg
+          width: 100%

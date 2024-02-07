@@ -5,6 +5,7 @@ import {
 import './App.css'
 import AuthContext from 'contexts/authContext'
 import Navbar from 'component/navbar/Navbar'
+import Header from 'component/header'
 import ViewA from 'view/ViewA'
 import ViewB from 'view/ViewB'
 import Login from 'view/auth/login'
@@ -43,6 +44,7 @@ function App() {
     <div className="App">
       <Router>
         {(isAuth) && (<Navbar />)}
+        <Header />
         <RouterPage />
       </Router>
     </div>

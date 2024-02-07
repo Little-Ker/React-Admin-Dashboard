@@ -1,112 +1,93 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
-  useEffect, useContext, useCallback, useState
+  useContext, useCallback, useState
 } from 'react'
 import {
-  Link, useNavigate
+  useNavigate
 } from 'react-router-dom'
-import { useTheme } from '@mui/material/styles'
+import { useTranslation } from 'react-i18next'
 import {
-  Divider, Grid, Stack, Typography, useMediaQuery, TextField, Button, Card
-} from '@mui/material'
+  Visibility, VisibilityOff, Google, Facebook, Lock, Person
+} from '@mui/icons-material'
 import AuthContext from 'contexts/authContext'
+import clsx from 'clsx'
+import styles from './login.module.sass'
 
 function Login() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
-
   const ctx = useContext(AuthContext)
 
-  const theme = useTheme()
-  const matchDownSM = useMediaQuery(theme.breakpoints.down('md'))
+  const [showPassword, setShowPassword] = useState(false)
 
   const [account, setAccount] = useState('abc')
   const [password, setPassword] = useState('123')
 
   const onSubmit = useCallback(async () => {
     await ctx?.onLogin(account, password)
-    navigate('/')
+    if (ctx?.isLoggedIn) navigate('/')
   }, [account, ctx, password, navigate])
 
   return (
-    <Grid
-      container
-      direction="column"
-      justifyContent="flex-end"
-      sx={{
-        minHeight: '100vh',
-        background: '#EEF2F6',
-      }}
-    >
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" alignItems="center" sx={{ minHeight: 'calc(100vh - 68px)' }}>
-          <Grid
-            item
-            sx={{ m: { xs: 1, sm: 3 }, mb: 0 }}
-          >
-            <Card>
-              <Grid container spacing={2} alignItems="center" justifyContent="center">
-                <Grid item sx={{ mb: 3 }}>
-                  <Link to="#">
-                    LOGO
-                  </Link>
-                </Grid>
-                <Grid item xs={12}>
-                  <Grid container direction={matchDownSM ? 'column-reverse' : 'row'} alignItems="center" justifyContent="center">
-                    <Grid item>
-                      <Stack alignItems="center" justifyContent="center" spacing={1}>
-                        <Typography variant="caption" fontSize="16px" textAlign={matchDownSM ? 'center' : 'inherit'}>
-                          Enter your credentials to continue
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={12}>
-                  <Grid container spacing={2} alignItems="center" justifyContent="center">
-                    <Grid item xs={12}>
-                      <TextField
-                        id="outlined-basic"
-                        label="帳號"
-                        variant="outlined"
-                        value={account}
-                        onChange={(e) => { setAccount(e.target.value) }}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        id="outlined-basic"
-                        label="密碼"
-                        variant="outlined"
-                        value={password}
-                        onChange={(e) => { setPassword(e.target.value) }}
-                      />
-                    </Grid>
-                    {(ctx?.logFalseTip !== '') && (
-                      <Grid item xs={12}>
-                        <p>{ctx?.logFalseTip}</p>
-                      </Grid>
-                    )}
-                    <Grid item xs={12}>
-                      <Button variant="contained" onClick={onSubmit}>Login</Button>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={12}>
-                  <Divider />
-                </Grid>
-                <Grid item xs={12}>
-                  <Grid item container direction="column" alignItems="center" xs={12}>
-                    <Typography component={Link} to="/pages/register/register3" variant="subtitle1" sx={{ textDecoration: 'none' }}>
-                      Don&apos;t have an account?
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Card>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item xs={12} sx={{ m: 3, mt: 1 }} />
-    </Grid>
+    <div className={styles.root}>
+      <form noValidate className={styles.form}>
+        <p className={styles.title}>Sign In</p>
+        <div className={styles.inputBorder}>
+          <div className={styles.icon}>
+            <Person />
+          </div>
+          <input
+            type="text"
+            value={account}
+            onChange={(e) => { setAccount(e.target.value) }}
+          />
+        </div>
+        <div className={styles.inputBorder}>
+          <div className={styles.icon}>
+            <Lock />
+          </div>
+          <input
+            value={password}
+            onChange={(e) => { setPassword(e.target.value) }}
+            type={showPassword ? 'text' : 'password'}
+          />
+          <div className={styles.icon} onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <Visibility /> : <VisibilityOff />}
+          </div>
+        </div>
+        {(ctx?.logFalseTip !== '') && (
+          <p className={styles.tip}>{ctx?.logFalseTip}</p>
+        )}
+        <button type="button" className={styles.loginBtn} onClick={onSubmit}>{t('Login')}</button>
+        <p className={styles.text}>{'or'}</p>
+        <button type="button" className={clsx(styles.loginBtn, styles.googleBtn)} onClick={onSubmit}>
+          <Google sx={{ marginRight: '.5rem' }} />
+          <p>{t('Sign in with Google')}</p>
+        </button>
+        <button type="button" className={clsx(styles.loginBtn, styles.facebookBtn)} onClick={onSubmit}>
+          <Facebook sx={{ marginRight: '.5rem' }} />
+          <p>{t('Sign in with Facebook')}</p>
+        </button>
+      </form>
+      <svg
+        className={styles.waves}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        shapeRendering="auto"
+      >
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g className="parallax">
+          <use className={styles.wave1} xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+          <use className={styles.wave2} xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+          <use className={styles.wave3} xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+          <use className={styles.wave4} xlinkHref="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div>
   )
 }
 
