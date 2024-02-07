@@ -8,10 +8,8 @@ import { AuthContextProvider } from 'contexts/authContext'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './styles/all.sass'
-
-import {
-  store
-} from './store'
+import './i18n'
+import { store } from './store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
