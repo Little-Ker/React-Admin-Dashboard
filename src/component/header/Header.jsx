@@ -7,6 +7,12 @@ import {
 } from '@mui/material'
 import ch from 'assets/lang/ic_flag_ch.png'
 import en from 'assets/lang/ic_flag_en.png'
+import {
+  useNavigate
+} from 'react-router-dom'
+import {
+  changeLang
+} from 'redux/settingSlice'
 import styles from './header.module.sass'
 
 const LANGS = [
@@ -24,6 +30,7 @@ const LANGS = [
 
 function Header() {
   const { i18n } = useTranslation()
+  const navigate = useNavigate()
 
   const [open, setOpen] = useState(null)
   const [lang, setLang] = useState(LANGS[0])
@@ -38,6 +45,7 @@ function Header() {
 
   const handleClickLang = useCallback((val) => {
     window.location.search = val?.value
+    changeLang(val?.value)
     setOpen(null)
   }, [])
 

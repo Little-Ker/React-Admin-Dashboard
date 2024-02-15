@@ -6,5 +6,12 @@
   "Sign in with Google": "Sign in with Google",
   "Sign in with Facebook": "Sign in with Facebook",
   "Don't have an account?": "Don't have an account?",
-  "Create account": "Create account"
+  "Create account": "Create Account",
+  "Please check your account and password": "Please check your account and password.",
+  "Your account and password cannot be empty": "Your account and password cannot be empty.",
+  "Incorrect re-entered password": "Incorrect re-entered password.",
+  "This account is already in use": "This account is already in use.",
+  "Already have an account?": "Already have an account?",
+  "Register": "Register",
+  "ReEnter Password": "ReEnter Password"
 }

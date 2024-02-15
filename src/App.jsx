@@ -9,6 +9,7 @@ import Header from 'component/header'
 import ViewA from 'view/ViewA'
 import ViewB from 'view/ViewB'
 import Login from 'view/auth/login'
+import Register from 'view/auth/register'
 
 function ProtectedRoutes() {
   const ctx = useContext(AuthContext)
@@ -26,6 +27,7 @@ function RouterPage() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route element={<ProtectedRoutes />}>
         <Route exact path="/" element={<ViewA />} />
         <Route exact path="viewA" element={<ViewA />} />

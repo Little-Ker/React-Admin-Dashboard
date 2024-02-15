@@ -6,5 +6,12 @@
   "Sign in with Google": "使用 Google 登入",
   "Sign in with Facebook": "使用 Facebook 登入",
   "Don't have an account?": "沒有帳號?",
-  "Create account": "建立帳號"
+  "Create account": "建立帳號",
+  "Please check your account and password": "帳號或密碼有誤",
+  "Your account and password cannot be empty": "帳號或密碼不可為空",
+  "Incorrect re-entered password": "重複密碼輸入有誤",
+  "This account is already in use": "此帳號已有人使用",
+  "Already have an account?": "已有帳號?",
+  "Register": "註冊",
+  "ReEnter Password": "重複輸入密碼"
 }
