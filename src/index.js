@@ -9,6 +9,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './styles/all.sass'
 import './i18n'
+import 'assets/mock/index'
 import { store } from './store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

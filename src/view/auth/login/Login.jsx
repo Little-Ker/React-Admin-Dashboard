@@ -31,7 +31,6 @@ function Login() {
 
   const onSubmit = useCallback(async () => {
     await ctx?.onLogin(account, password)
-
     navigate(`/?${lang}`)
   }, [ctx, account, password, navigate, lang])
 

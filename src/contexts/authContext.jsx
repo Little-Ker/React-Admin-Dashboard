@@ -2,6 +2,7 @@ import React, {
   useMemo, useState, createContext, useCallback
 } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 
 const AuthContext = createContext({
@@ -24,17 +25,24 @@ export function AuthContextProvider(props) {
     // setIsLoggedIn(false)
   }, [])
 
-  const loginHandler = useCallback((account, password) => {
+  const loginHandler = useCallback(async (account, password) => {
     setLogFalseTip('')
-    if (account === 'abc' && password === '123') {
-      setIsLoggedIn(true)
-      return
-    }
-    setLogFalseTip(t('Please check your account and password'))
-    throw new Error(t('Please check your account and password'))
+
+    await axios.post(process.env.REACT_APP_M_LOGIN, {
+      'acc': account,
+      'pwd': password,
+    }).then((response) => {
+      const { status } = response.data
+      if (status === 'success') {
+        setIsLoggedIn(true)
+      } else {
+        setLogFalseTip(t('Please check your account and password'))
+        throw new Error('Please check your account and password')
+      }
+    })
   }, [t])
 
-  const registerHandler = useCallback((account, password, reEnterPassword) => {
+  const registerHandler = useCallback(async (account, password, reEnterPassword) => {
     setLogFalseTip('')
     if (account === '' || password === '') {
       setLogFalseTip(t('Your account and password cannot be empty'))
@@ -49,9 +57,16 @@ export function AuthContextProvider(props) {
       throw new Error(t('Please check your account and password'))
     }
 
-    if (account === 'abc' && password === '123') {
-      setIsLoggedIn(true)
-    }
+    await axios.post(process.env.REACT_APP_M_REGISTER, {
+      'acc': account,
+      'pwd': password,
+    }).then((response) => {
+      const { status } = response.data
+      if (status !== 'success') {
+        setLogFalseTip(t('Please check your account and password'))
+        throw new Error('Please check your account and password')
+      }
+    })
   }, [t])
 
   const resetTipHandler = useCallback(() => {
