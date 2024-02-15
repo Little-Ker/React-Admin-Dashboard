@@ -19,6 +19,7 @@
       color: #fff
       font-size: 2rem
       margin-bottom: 1.5rem
+      letter-spacing: 1px
     .inputBorder
       margin: .5rem 0
       border-radius: 1rem
@@ -40,6 +41,7 @@
       color: #fff
       position: relative
       width: 100%
+      margin: .5rem 0
       &::after, &::before
         content: ''
         position: absolute
@@ -88,9 +90,28 @@
         opacity: 1
     .tip
       text-align: right
-      color: #fff
+      color: #ff7e7e
       align-self: flex-end
-      margin: 1rem 0
+      margin: .5rem 0
+      font-size: 14px
+    .registerContent
+      color: #fff
+      font-size: 14px
+      display: flex
+    .register
+      margin-left: .5rem
+      position: relative
+      cursor: pointer
+      &::before
+        content: ''
+        width: 0%
+        height: 1px
+        transition: .3s all
+        background: #fff
+        position: absolute
+        bottom: -.3rem
+      &:hover::before
+        width: 100%
   .waves
     position: absolute
     height: 20vh

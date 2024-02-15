@@ -28,6 +28,7 @@ export function AuthContextProvider(props) {
       return
     }
     setLogFalseTip('帳號或密碼有誤')
+    throw new Error('Please check your email and password')
   }, [])
 
   const contextValue = useMemo(() => ({

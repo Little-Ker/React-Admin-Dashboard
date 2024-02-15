@@ -1,5 +1,10 @@
 {
+  "Sign In": "Sign In",
+  "Account": "Account",
+  "Password": "Password",
   "Login": "Login",
   "Sign in with Google": "Sign in with Google",
-  "Sign in with Facebook": "Sign in with Facebook"
+  "Sign in with Facebook": "Sign in with Facebook",
+  "Don't have an account?": "Don't have an account?",
+  "Create account": "Create account"
 }

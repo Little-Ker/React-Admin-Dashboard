@@ -15,8 +15,6 @@ const resources = {
   },
 }
 
-console.log('resources', resources)
-
 i18n
   .use(Backend) // load translation using http
   .use(LanguageDetector) // detect user language

@@ -26,19 +26,20 @@ function Login() {
 
   const onSubmit = useCallback(async () => {
     await ctx?.onLogin(account, password)
-    if (ctx?.isLoggedIn) navigate('/')
-  }, [account, ctx, password, navigate])
+    navigate('/')
+  }, [ctx, account, password, navigate])
 
   return (
     <div className={styles.root}>
       <form noValidate className={styles.form}>
-        <p className={styles.title}>Sign In</p>
+        <p className={styles.title}>{t('Sign In')}</p>
         <div className={styles.inputBorder}>
           <div className={styles.icon}>
             <Person />
           </div>
           <input
             type="text"
+            placeholder={t('Account')}
             value={account}
             onChange={(e) => { setAccount(e.target.value) }}
           />
@@ -49,6 +50,7 @@ function Login() {
           </div>
           <input
             value={password}
+            placeholder={t('Password')}
             onChange={(e) => { setPassword(e.target.value) }}
             type={showPassword ? 'text' : 'password'}
           />
@@ -69,6 +71,10 @@ function Login() {
           <Facebook sx={{ marginRight: '.5rem' }} />
           <p>{t('Sign in with Facebook')}</p>
         </button>
+        <div className={styles.registerContent}>
+          <p>{t('Don\'t have an account?')}</p>
+          <p className={styles.register}>{t('Create account')}</p>
+        </div>
       </form>
       <svg
         className={styles.waves}

@@ -1,5 +1,10 @@
 {
+  "Sign In": "帳號登入",
+  "Account": "帳號",
+  "Password": "密碼",
   "Login": "登入",
   "Sign in with Google": "使用 Google 登入",
-  "Sign in with Facebook": "使用 Facebook 登入"
+  "Sign in with Facebook": "使用 Facebook 登入",
+  "Don't have an account?": "沒有帳號?",
+  "Create account": "建立帳號"
 }
