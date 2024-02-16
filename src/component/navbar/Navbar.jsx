@@ -23,11 +23,15 @@ export default function Navbar() {
     const checkList = []
     routes?.forEach((cur, index) => {
       const checks = []
-      cur.list.forEach((cur2, index2) => checks.push(false))
+      cur.list.forEach((cur2, index2) => {
+        let findPath = null
+        if (cur2?.subLink) findPath = cur2?.subLink?.find(cur3 => location?.pathname === `${cur3?.to}`)
+        checks.push(!!findPath)
+      })
       checkList.push(checks)
     })
     return checkList
-  }, [])
+  }, [location?.pathname])
   const [checked, setChecked] = useState(defaultChecked)
 
   const changeCheck = useCallback((index, index2) => {

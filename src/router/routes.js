@@ -1,5 +1,5 @@
 import React from 'react'
-import { SupervisedUserCircle, ChevronRight, VpnKey } from '@mui/icons-material'
+import { SupervisedUserCircle, VpnKey } from '@mui/icons-material'
 
 const routes = [
   {
@@ -13,7 +13,7 @@ const routes = [
       icon: <VpnKey />,
       subLink: [{
         name: 'Cards1',
-        to: '/viewA1',
+        to: '/dashboard',
       }, {
         name: 'Cards2',
         to: '/viewA2',

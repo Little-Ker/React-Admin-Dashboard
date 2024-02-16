@@ -29,7 +29,7 @@ function RouterPage() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route element={<ProtectedRoutes />}>
-        <Route exact path="/" element={<ViewA />} />
+        <Route exact path="/dashboard" element={<ViewA />} />
         <Route exact path="viewA" element={<ViewA />} />
         <Route exact path="viewB" element={<ViewB />} />
         <Route path="*" element={<ViewA />} />

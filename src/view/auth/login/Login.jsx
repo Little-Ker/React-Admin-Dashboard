@@ -31,7 +31,7 @@ function Login() {
 
   const onSubmit = useCallback(async () => {
     await ctx?.onLogin(account, password)
-    navigate(`/?${lang}`)
+    navigate(`/dashboard?${lang}`)
   }, [ctx, account, password, navigate, lang])
 
   const onEnterRegisterView = useCallback(async () => {
