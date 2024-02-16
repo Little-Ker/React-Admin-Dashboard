@@ -42,9 +42,10 @@ function Header() {
   }, [])
 
   const onChangeLang = useCallback((val) => {
-    const findLang = LANGS.find(item => (item.value === val?.value))
+    const findLang = LANGS.find(item => (item.value === val))
     const langValue = (findLang) ? findLang.value : 'en'
 
+    localStorage.setItem('lang', langValue)
     setLang((findLang) || LANGS[0])
     dispatch(changeLang(langValue))
     i18n.changeLanguage(langValue)
@@ -52,13 +53,13 @@ function Header() {
   }, [dispatch, i18n])
 
   const handleClickLang = useCallback((val) => {
-    onChangeLang(val)
+    onChangeLang(val?.value)
     setOpen(null)
   }, [onChangeLang])
 
   useEffect(() => {
-    if (window.location.search !== '') return
-    const languageDetector = (navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage) || 'en'
+    const languageDetector = (localStorage.getItem('lang') || navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage) || 'en'
+
     onChangeLang(languageDetector)
   }, [dispatch, i18n, onChangeLang])
 
