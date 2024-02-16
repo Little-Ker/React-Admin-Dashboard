@@ -5,14 +5,12 @@ import { useTranslation } from 'react-i18next'
 import {
   Popover, IconButton, MenuItem, Box
 } from '@mui/material'
-import ch from 'assets/lang/ic_flag_ch.png'
+import tw from 'assets/lang/ic_flag_ch.png'
 import en from 'assets/lang/ic_flag_en.png'
-import {
-  useNavigate
-} from 'react-router-dom'
 import {
   changeLang
 } from 'redux/settingSlice'
+import { useDispatch } from 'react-redux'
 import styles from './header.module.sass'
 
 const LANGS = [
@@ -24,13 +22,13 @@ const LANGS = [
   {
     value: 'tw',
     label: '繁體中文',
-    icon: ch,
+    icon: tw,
   },
 ]
 
 function Header() {
   const { i18n } = useTranslation()
-  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [open, setOpen] = useState(null)
   const [lang, setLang] = useState(LANGS[0])
@@ -43,25 +41,26 @@ function Header() {
     setOpen(null)
   }, [])
 
+  const onChangeLang = useCallback((val) => {
+    const findLang = LANGS.find(item => (item.value === val?.value))
+    const langValue = (findLang) ? findLang.value : 'en'
+
+    setLang((findLang) || LANGS[0])
+    dispatch(changeLang(langValue))
+    i18n.changeLanguage(langValue)
+    window.history.replaceState({}, '', `${window.location.pathname}?${langValue}`)
+  }, [dispatch, i18n])
+
   const handleClickLang = useCallback((val) => {
-    window.location.search = val?.value
-    changeLang(val?.value)
+    onChangeLang(val)
     setOpen(null)
-  }, [])
+  }, [onChangeLang])
 
   useEffect(() => {
     if (window.location.search !== '') return
     const languageDetector = (navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage) || 'en'
-    const findLang = LANGS.find(item => (item.value === languageDetector))
-    window.location.search = (findLang) ? findLang.value : 'en'
-  }, [i18n?.language])
-
-  useEffect(() => {
-    const params = window.location.search
-    i18n.changeLanguage(params.substr(1))
-    const findLang = LANGS.find(item => (item.value === i18n.language))
-    setLang((findLang) || LANGS[0])
-  }, [i18n, lang])
+    onChangeLang(languageDetector)
+  }, [dispatch, i18n, onChangeLang])
 
   return (
     <div className={styles.root}>

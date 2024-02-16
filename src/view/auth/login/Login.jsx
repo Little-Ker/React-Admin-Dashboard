@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
-  useContext, useCallback, useState, useEffect
+  useContext, useCallback, useState
 } from 'react'
 import {
   useNavigate
@@ -70,9 +70,7 @@ function Login() {
             {showPassword ? <Visibility /> : <VisibilityOff />}
           </div>
         </div>
-        {(ctx?.logFalseTip !== '') && (
-          <p className={styles.tip}>{ctx?.logFalseTip}</p>
-        )}
+        {(ctx?.logFalseTip !== '') && (<p className={styles.tip}>{ctx?.logFalseTip}</p>)}
         <button type="button" className={styles.loginBtn} onClick={onSubmit}>{t('Login')}</button>
         <p className={styles.text}>{'or'}</p>
         <button type="button" className={clsx(styles.loginBtn, styles.googleBtn)} onClick={onSubmit}>
