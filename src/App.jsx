@@ -47,7 +47,10 @@ function App() {
       <Router>
         {(isAuth) && (<Navbar />)}
         <Header />
-        <RouterPage />
+        <div style={{ marginLeft: (isAuth) ? '300px' : 0, marginTop: (isAuth) ? '100px' : 0 }}>
+          <RouterPage />
+        </div>
+
       </Router>
     </div>
   )
