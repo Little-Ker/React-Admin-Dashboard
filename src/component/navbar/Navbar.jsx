@@ -1,23 +1,22 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
-  useCallback, useEffect, useMemo, useState
+  useCallback, useMemo, useState
 } from 'react'
 import clsx from 'clsx'
-import {
-  Link, useLocation
-} from 'react-router-dom'
-import {
-  useSelector
-} from 'react-redux'
-import { ChevronRight } from '@mui/icons-material'
-import Collapse from '@mui/material/Collapse'
+import { Link, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { ChevronRight, FiberManualRecord } from '@mui/icons-material'
+import { Collapse } from '@mui/material'
 import routes from 'router/routes'
+import { createTheme } from 'theme'
 import styles from './navbar.module.sass'
 
 export default function Navbar() {
-  const lang = useSelector(state => state.setting.lang)
+  const { mainColor, lang } = useSelector(state => state.setting)
   const location = useLocation()
+
+  const theme = createTheme({ mainColor })
 
   const defaultChecked = useMemo(() => {
     const checkList = []
@@ -47,11 +46,17 @@ export default function Navbar() {
       key={`${index.toString()}`}
       to={`${link?.to}?${lang}`}
       className={clsx(styles.link, location?.pathname === `${link.to}` && styles.active)}
+      style={{ color: (location?.pathname === `${link.to}`) ? theme?.palette?.primary?.main : '#fff' }}
     >
-      {link?.icon}
-      <p className={clsx(styles.linkText, subLink && styles.subLinkText)}>{link.name}</p>
+      {(link?.icon) ? link?.icon : <FiberManualRecord className={styles.dot} fontSize="small" />}
+      <p
+        className={clsx(styles.linkText, subLink && styles.subLinkText)}
+        style={{ color: (location?.pathname === `${link.to}`) ? theme?.palette?.primary?.main : '#fff' }}
+      >
+        {link.name}
+      </p>
     </Link>
-  ), [location?.pathname, lang])
+  ), [lang, location?.pathname, theme])
 
   return (
     <div className={styles.navbar}>

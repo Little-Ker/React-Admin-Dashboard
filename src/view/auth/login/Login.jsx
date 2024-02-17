@@ -15,11 +15,16 @@ import clsx from 'clsx'
 import {
   useSelector
 } from 'react-redux'
+import { createTheme } from 'theme'
 import styles from './login.module.sass'
 
 function Login() {
   const { t } = useTranslation()
-  const lang = useSelector(state => state.setting.lang)
+  const { mainColor, lang } = useSelector(state => state.setting)
+
+  const theme = createTheme({
+    mainColor,
+  })
 
   const navigate = useNavigate()
   const ctx = useContext(AuthContext)
@@ -71,7 +76,7 @@ function Login() {
           </div>
         </div>
         {(ctx?.logFalseTip !== '') && (<p className={styles.tip}>{ctx?.logFalseTip}</p>)}
-        <button type="button" className={styles.loginBtn} onClick={onSubmit}>{t('Login')}</button>
+        <button type="button" style={{ background: theme?.palette?.primary?.main }} className={styles.loginBtn} onClick={onSubmit}>{t('Login')}</button>
         <p className={styles.text}>{'or'}</p>
         <button type="button" className={clsx(styles.loginBtn, styles.googleBtn)} onClick={onSubmit}>
           <Google sx={{ marginRight: '.5rem' }} />

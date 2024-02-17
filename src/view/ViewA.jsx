@@ -8,13 +8,16 @@ import {
 import {
   addTodo
 } from 'redux/todoSlice'
+import {
+  Typography
+} from '@mui/material'
 import TodoList from 'component/test/TodoList'
 
 function ReduxEX() {
   const dispatch = useDispatch()
   return (
     <div>
-      <h2 style={{ marginTop: '30px' }}>Redux 讀改資料</h2>
+      <Typography variant="h5" color="primary" style={{ marginTop: '30px' }}>Redux 讀改資料</Typography>
       <TodoList />
       <button type="button" onClick={() => dispatch(addTodo('test'))}>add</button>
     </div>
@@ -32,7 +35,7 @@ function AxiosEx() {
 
   return (
     <div>
-      <h2 style={{ marginTop: '30px' }}>Axios</h2>
+      <Typography variant="h5" color="primary" style={{ marginTop: '30px' }}>Axios</Typography>
       {data.map((item, index) => (
         <p key={`${index.toString()}`}>
           {item.title}
@@ -49,7 +52,7 @@ function AxiosEx() {
 function ViewA() {
   return (
     <>
-      <h1>ViewA</h1>
+      <Typography variant="h4" color="primary">ViewA</Typography>
       <AxiosEx />
       <ReduxEX />
     </>

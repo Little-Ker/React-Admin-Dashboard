@@ -1,7 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import {
   BrowserRouter as Router, Route, Routes, Navigate, useLocation, Outlet
 } from 'react-router-dom'
+import { Paper } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
+import { createTheme } from 'theme'
+import { useSelector } from 'react-redux'
 import './App.css'
 import AuthContext from 'contexts/authContext'
 import Navbar from 'component/navbar/Navbar'
@@ -41,18 +45,31 @@ function RouterPage() {
 function App() {
   const ctx = useContext(AuthContext)
   const isAuth = ctx?.isLoggedIn
+  const { mode, mainColor } = useSelector(state => state.setting)
+
+  const theme = useMemo(() => createTheme({
+    mainColor,
+    mode,
+  }), [mainColor, mode])
 
   return (
-    <div className="App">
-      <Router>
-        {(isAuth) && (<Navbar />)}
-        <Header />
-        <div style={{ marginLeft: (isAuth) ? '300px' : 0, marginTop: (isAuth) ? '100px' : 0 }}>
-          <RouterPage />
-        </div>
-
-      </Router>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Paper className="App">
+        <Router>
+          {(isAuth) && (<Navbar />)}
+          <Header />
+          <div style={{
+            marginLeft: (isAuth) ? '280px' : 0,
+            paddingTop: (isAuth) ? '85px' : 0,
+            minHeight: '100vh',
+            width: (isAuth) ? 'calc(100% - 280px)' : '100%',
+          }}
+          >
+            <RouterPage />
+          </div>
+        </Router>
+      </Paper>
+    </ThemeProvider>
   )
 }
 

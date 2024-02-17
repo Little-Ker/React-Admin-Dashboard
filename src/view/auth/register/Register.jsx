@@ -15,13 +15,18 @@ import clsx from 'clsx'
 import {
   useSelector
 } from 'react-redux'
+import { createTheme } from 'theme'
 import styles from './register.module.sass'
 
 function Register() {
   const { t } = useTranslation()
-  const lang = useSelector(state => state.setting.lang)
+  const { mainColor, lang } = useSelector(state => state.setting)
   const navigate = useNavigate()
   const ctx = useContext(AuthContext)
+
+  const theme = createTheme({
+    mainColor,
+  })
 
   const [showPassword, setShowPassword] = useState([false, false])
 
@@ -92,7 +97,7 @@ function Register() {
           </div>
         ))}
         {(ctx?.logFalseTip !== '') && (<p className={styles.tip}>{ctx?.logFalseTip}</p>)}
-        <button type="button" className={styles.loginBtn} onClick={onRegister}>{t('Register')}</button>
+        <button type="button" style={{ background: theme?.palette?.primary?.main }} className={styles.loginBtn} onClick={onRegister}>{t('Register')}</button>
         <p className={styles.text}>{'or'}</p>
         <button type="button" className={clsx(styles.loginBtn, styles.googleBtn)} onClick={onRegister}>
           <Google sx={{ marginRight: '.5rem' }} />

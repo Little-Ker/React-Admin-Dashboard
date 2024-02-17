@@ -1,6 +1,6 @@
 .navbar
   padding: 1rem 1.5rem
-  position: absolute
+  position: fixed
   left: 0
   top: 0
   display: flex
@@ -8,6 +8,7 @@
   background: #031c27
   width: 280px
   height: 100vh
+  min-width: 280px
   max-height: 100vh
   overflow: auto
   z-index: 99
@@ -50,26 +51,15 @@
       color: #fff
       margin-left: .6rem
     .subLinkText
-      margin-left: 2rem
+      margin-left: .6rem
       position: relative
-      &::before
-        content: ''
-        position: absolute
-        width: 5px
-        height: 5px
-        border-radius: 50%
-        background: #ffffff00
-        left: -1.2rem
-        top: calc((100% - 2.5px) / 2)
+    .dot
+      width: 10px
+      margin-left: 2rem
     &:hover
       background: rgba(255, 255, 255, 0.15)
     &.active
       background: rgba(255, 255, 255, 0.15)
-      color: #5fd287
-      .linkText
-        color: #5fd287
-        &::before
-          background: #5fd287
   .linkMenu
     display: flex
     align-items: center
