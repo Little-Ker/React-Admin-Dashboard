@@ -10,6 +10,7 @@ import './App.css'
 import AuthContext from 'contexts/authContext'
 import Navbar from 'component/navbar/Navbar'
 import Header from 'component/header'
+import routes from 'router/routes'
 import ViewA from 'view/ViewA'
 import ViewB from 'view/ViewB'
 import Login from 'view/auth/login'
@@ -33,9 +34,15 @@ function RouterPage() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route element={<ProtectedRoutes />}>
-        <Route exact path="/dashboard" element={<ViewA />} />
-        <Route exact path="viewA" element={<ViewA />} />
-        <Route exact path="viewB" element={<ViewB />} />
+        {routes.map(cur => (
+          cur?.list.map((cur2, index2) => (
+            (cur2?.to) ? (<Route key={cur2.to} exact path={cur2.to} element={cur2.view} />) : (
+              cur2?.subLink?.map((cur3, index3) => (
+                <Route key={cur3.to} exact path={cur3.to} element={cur3.view} />
+              ))
+            )
+          ))
+        ))}
         <Route path="*" element={<ViewA />} />
       </Route>
     </Routes>
@@ -63,6 +70,7 @@ function App() {
             paddingTop: (isAuth) ? '85px' : 0,
             minHeight: '100vh',
             width: (isAuth) ? 'calc(100% - 280px)' : '100%',
+            backgroundColor: theme?.palette?.background?.default,
           }}
           >
             <RouterPage />

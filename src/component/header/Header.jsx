@@ -72,10 +72,10 @@ function Header() {
   }, [dispatch, i18n, onChangeLang])
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} style={{ width: (isAuth) ? 'calc(100% - 280px)' : '100%' }}>
       <div className={styles.header}>
         <div className={styles.leftContent}>
-          <div className={styles.logo}>{'VIVI'}</div>
+          {(!isAuth) && (<div className={styles.logo}>{'VIVI'}</div>)}
         </div>
         <div className={styles.rightContent}>
           <IconButton
