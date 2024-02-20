@@ -7,14 +7,16 @@ import clsx from 'clsx'
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ChevronRight, FiberManualRecord } from '@mui/icons-material'
-import { Collapse } from '@mui/material'
+import { Collapse, Typography } from '@mui/material'
 import routes from 'router/routes'
 import { createTheme } from 'theme'
+import { useTranslation } from 'react-i18next'
 import styles from './navbar.module.sass'
 
 export default function Navbar() {
   const { mainColor, lang } = useSelector(state => state.setting)
   const location = useLocation()
+  const { t } = useTranslation()
 
   const theme = createTheme({ mainColor })
 
@@ -65,7 +67,7 @@ export default function Navbar() {
       </div>
       {routes?.map((cur, index) => (
         <div key={`${index.toString()}`}>
-          <p className={styles.category}>{cur?.category}</p>
+          <Typography variant="overline" className={styles.category}>{t(cur?.category)}</Typography>
           {cur?.list.map((cur2, index2) => (
             <div key={`${index2.toString()}`}>
               {(cur2?.to) ? (
