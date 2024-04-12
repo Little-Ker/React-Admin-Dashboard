@@ -6,7 +6,7 @@ import {
 
 function BaseTextField(props) {
   const {
-    label, value, setValue, readonly,
+    label, value, setValue, readonly, width, placeholder, multiline, rows, sx,
   } = props
 
   return (
@@ -15,8 +15,11 @@ function BaseTextField(props) {
       value={value}
       onChange={event => setValue(event.target.value)}
       label={label}
+      placeholder={placeholder}
+      multiline={multiline}
+      rows={rows}
       sx={{
-        minWidth: '200px',
+        width,
         label: {
           position: 'absolute',
           top: 0,
@@ -28,7 +31,16 @@ function BaseTextField(props) {
           },
         },
         input: {
-          padding: (label) ? '20px 14px 8px 14px' : '14px 14px',
+          padding: (label) ? '20px 14px 8px 14px' : '8px 8px',
+          '&::placeholder': {
+            color: '#999',
+          },
+        },
+        textarea: {
+          padding: (label) ? '5px 0 0 0' : '0',
+          '&::placeholder': {
+            color: '#999',
+          },
         },
         legend: {
           display: 'none',
@@ -36,6 +48,7 @@ function BaseTextField(props) {
         fieldset: {
           top: 0,
         },
+        ...sx,
       }}
     />
   )
@@ -46,7 +59,11 @@ BaseTextField.propTypes = {
   value: PropTypes.string,
   setValue: PropTypes.func,
   readonly: PropTypes.bool,
-
+  width: PropTypes.string,
+  placeholder: PropTypes.string,
+  multiline: PropTypes.bool,
+  rows: PropTypes.number,
+  sx: PropTypes.object,
 }
 
 BaseTextField.defaultProps = {
@@ -54,6 +71,11 @@ BaseTextField.defaultProps = {
   value: '',
   setValue: () => {},
   readonly: false,
+  width: '100%',
+  placeholder: '',
+  multiline: false,
+  rows: 1,
+  sx: {},
 }
 
 export default BaseTextField
