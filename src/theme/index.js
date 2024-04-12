@@ -18,6 +18,10 @@ export const createTheme = (config) => {
       main: variable.mainPurple,
       dark: variable.mainPurpleDark,
     },
+    Black: {
+      main: variable.mainBlack,
+      dark: variable.mainBlackDark,
+    },
   }
 
   const theme = createMuiTheme(
@@ -39,6 +43,29 @@ export const createTheme = (config) => {
         purple: {
           main: mainColor.Purple.main,
           dark: mainColor.Purple.main,
+        },
+        black: {
+          main: config.mode === 'Dark' ? '#fff' : mainColor.Black.main,
+          dark: config.mode === 'Dark' ? '#fff' : mainColor.Black.main,
+        },
+
+        secondary: {
+          main: variable.success,
+        },
+        success: {
+          main: variable.success,
+        },
+        error: {
+          main: variable.error,
+        },
+        warning: {
+          main: variable.warning,
+        },
+        info: {
+          main: variable.info,
+        },
+        over: {
+          main: variable.over,
         },
       },
     }

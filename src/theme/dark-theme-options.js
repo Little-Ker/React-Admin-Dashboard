@@ -35,7 +35,7 @@ const secondary = {
 
 const success = {
   main: '#14B8A6',
-  light: '#43C6B7',
+  light: '#3d9132',
   dark: '#0E8074',
   contrastText: neutral[900],
 }
@@ -69,6 +69,13 @@ const text = {
 
 export const darkThemeOptions = {
   components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          backgroundColor: neutral[500],
+        },
+      },
+    },
     MuiAvatar: {
       styleOverrides: {
         root: {
@@ -108,7 +115,7 @@ export const darkThemeOptions = {
     MuiOutlinedInput: {
       styleOverrides: {
         notchedOutline: {
-          borderColor: divider,
+          borderColor: neutral[600],
         },
       },
     },
