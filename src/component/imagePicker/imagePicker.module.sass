@@ -1,0 +1,39 @@
+.root
+  display: block
+  width: 100%
+  .uploadBtn
+    overflow: hidden
+    width: 100%
+    height: 180px
+  .photo
+    position: relative
+    width: 100%
+    height: 100%
+    img
+      display: block
+    .textTip
+      position: absolute
+      top: 0
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100%
+      height: 100%
+      background: rgba(#000, 0.3)
+      text-shadow: 0 0 5px #000000aa
+      opacity: 0
+      transition: .3s all
+      &.showTextTip:hover
+        opacity: 1
+  .hideTextBtn
+    padding: 0
+  .tip
+    font-size: 12px
+    position: relative
+    text-align: right
+    color: #fb2727
+    letter-spacing: 1px
+
+
+
+
