@@ -1,0 +1,86 @@
+.root
+  padding: 1rem 1.5rem
+  width: 360px
+  .header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding-bottom: 1rem
+    border-bottom: 1px solid #eee
+    .title
+      font-size: 1.2rem
+      font-weight: bold
+    .iconBtn
+      margin-left: .1rem
+  .content
+    margin: 1rem 0 1rem 0
+    padding-bottom: 1rem
+    border-bottom: 1px solid #eee
+    .cardSetting
+    .setting
+      margin-bottom: .5rem
+      .title
+        font-size: 1.2rem
+        margin-bottom: .5rem
+      .colorPicker
+        width: 35px
+        height: 30px
+        border-radius: .5rem
+        border: 2px solid #fff
+        margin-bottom: .5rem
+        &.active
+          box-shadow: 0 0 0 1px #aaa
+    &.taskContent
+      .checklistHeader
+        margin-bottom: .5rem
+      .task
+        display: flex
+        justify-content: space-between
+        align-items: center
+        .taskName
+          display: flex
+          align-items: center
+          .checked
+            opacity: .5
+            text-decoration: line-through
+      .inputTask
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-top: .5rem
+  .footer
+    .messages
+      border-bottom: 1px solid #eee
+      .message
+        display: flex
+        margin: 1rem 0
+        .messageContent
+          background: #eee
+          width: 100%
+          padding: .5rem 1rem
+          border-radius: .5rem
+          display: flex
+          flex-direction: column
+          margin-left: .5rem
+          border-bottom: 1px solid rgb(38 32 32 / 15%)
+          .date
+            font-size: .8rem
+            color: #666
+            align-self: flex-end
+            margin-top: .3rem
+    .comment
+      margin-top: 1rem
+      display: flex
+      .comment_content
+        display: flex
+        flex-direction: column
+        margin-left: .5rem
+        width: 100%
+      .comment_textField
+        width: 100%
+        margin-bottom: .5rem
+      .comment_btn
+        align-self: flex-end
+.buttonList
+  display: flex
+  gap: .5rem

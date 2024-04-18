@@ -1,0 +1,64 @@
+.root
+  display: flex
+  align-items: flex-start
+  min-height: calc(100vh - 250px)
+  .list
+    padding: 1rem .5rem
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px
+    margin: .5rem
+    border-radius: .5rem
+    min-width: 280px
+    width: 280px
+    position: relative
+    .listHeader
+      display: flex
+      justify-content: space-between
+      align-items: center
+      margin-bottom: .5rem
+      padding: 0 .5rem
+      .listTitle
+        font-weight: bold
+  .taskBox
+    min-height: 1rem
+    .gameCard
+      padding: 0
+  .addBtn
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: .7rem
+    margin: .5rem
+    margin-top: 1rem
+    border-radius: .5rem
+    transition: .3s all
+    background: #fff
+    cursor: pointer
+    border: 2px solid #ffffff00
+    font-size: 1rem
+    width: 250px
+    .text
+      margin-left: .3rem
+    &:hover
+      border-color: var(--primary-color) !important
+      opacity: 1 !important
+    .addCardBtn
+      &:hover
+        background: #fff
+  .controlList
+    display: flex
+    margin-left: .3rem
+  .sectionBtn
+    margin-top: .5rem
+    min-width: 280px
+    flex-direction: column
+    &:hover
+      opacity: .8
+      border-color: #ffffff00
+    .btn
+      display: flex
+      align-items: center
+      &.addButton
+        margin-top: .5rem
+.buttonList
+  display: flex
+  gap: .5rem
