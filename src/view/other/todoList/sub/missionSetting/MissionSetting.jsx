@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types'
 import TextField from 'component/textField'
 import Select from 'component/select'
+import { useSelector } from 'react-redux'
 import {
   ColorLens, DeleteForever, Edit, Add, RemoveCircleOutline, EditOff, Close, Check
 } from '@mui/icons-material'
@@ -19,6 +20,7 @@ import useDataState from '../zustand/dataState'
 import styles from './missionSetting.module.sass'
 
 function MissionSetting(props) {
+  const { mode } = useSelector(state => state.setting)
   const {
     missionData, onClose, missionList, isOpenAddSetting,
   } = props
@@ -282,7 +284,10 @@ function MissionSetting(props) {
               return (
                 <div key={cur.id} className={styles.message}>
                   <Avatar alt={memberData?.name} src={memberData?.imgUrl} />
-                  <div className={styles.messageContent}>
+                  <div
+                    className={styles.messageContent}
+                    style={{ background: (mode === 'Light') ? '#d3d3d3c2' : '#31353d' }}
+                  >
                     <p>{cur.content}</p>
                     <p className={styles.date}>{getDateTime(cur.date)}</p>
                   </div>

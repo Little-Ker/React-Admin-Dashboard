@@ -230,7 +230,8 @@ function MissionList(props) {
                   {provided.placeholder}
                 </div>
                 <Button
-                  className={clsx(styles.addBtn, styles.addCardBtn)}
+                  className={styles.addBtn}
+                  style={{ background: (mode === 'Light') ? 'rgb(255 255 255 / 80%)' : 'rgb(13 18 26 / 80%)' }}
                   onClick={() => onClickAddCard(cur.id)}
                 >
                   <Add fontSize="small" />
