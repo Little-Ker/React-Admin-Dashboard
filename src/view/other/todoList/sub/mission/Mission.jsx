@@ -1,12 +1,13 @@
 import React, { useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Avatar, AvatarGroup
+  Avatar, AvatarGroup, Box
 } from '@mui/material'
 import { useSelector } from 'react-redux'
 import {
   Checklist, Comment, EditNote
 } from '@mui/icons-material'
+import { createTheme } from 'theme'
 import styles from './mission.module.sass'
 import useDataState from '../zustand/dataState'
 
@@ -17,8 +18,10 @@ function Mission(props) {
     missionData,
   } = props
 
-  const { mode } = useSelector(state => state.setting)
+  const { mode, mainColor } = useSelector(state => state.setting)
   const { members } = useDataState()
+
+  const theme = createTheme({ mainColor })
 
   const getMemberData = useCallback(name => members?.find(cur => cur.name === name), [members])
 
@@ -28,7 +31,15 @@ function Mission(props) {
   }, [missionData])
 
   return (
-    <div className={styles.root} style={{ background: (mode === 'Light') ? 'rgb(255 255 255 / 80%)' : 'rgb(13 18 26 / 80%)' }}>
+    <Box
+      className={styles.root}
+      sx={{
+        background: (mode === 'Light') ? 'rgb(255 255 255 / 80%)' : 'rgb(13 18 26 / 80%)',
+        '&:hover': {
+          borderColor: theme?.palette?.primary?.main,
+        },
+      }}
+    >
       <div className={styles.header}>
         <div
           className={styles.color}
@@ -81,7 +92,7 @@ function Mission(props) {
           <p className={styles.text}>{missionData?.messages?.length || 0}</p>
         </div>
       </div>
-    </div>
+    </Box>
   )
 }
 

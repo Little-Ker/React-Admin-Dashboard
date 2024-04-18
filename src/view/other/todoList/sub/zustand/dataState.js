@@ -116,29 +116,6 @@ const useOptionsState = create(set => ({
     id: -3,
     label: 'Customer Audience',
   }],
-
-  mailCategoryList: [{
-    id: 1,
-    label: 'General',
-  }, {
-    id: 2,
-    label: 'Image',
-  }],
-
-  category: 'Questionnaire',
-  setCDNDomain: (data) => {
-    set({ CDNDomain: data })
-  },
-  setLangList: (data) => {
-    set({ langList: data })
-  },
-
-  setCustomSettingList: (data) => {
-    set({ customSettingList: data })
-  },
-  setAudienceGroupList: (data) => {
-    set({ audienceGroupList: data })
-  },
 }))
 
 export default useOptionsState

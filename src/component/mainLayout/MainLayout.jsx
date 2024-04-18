@@ -11,7 +11,6 @@ function MainLayout(props) {
     <Box sx={{
       backgroundColor: theme?.palette?.background?.default,
       height: '100%',
-      padding: '0px 48px',
     }}
     >
       {children}

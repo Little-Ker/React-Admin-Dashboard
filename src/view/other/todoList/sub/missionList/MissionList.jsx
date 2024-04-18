@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, {
   useState, useCallback
 } from 'react'
@@ -22,6 +23,7 @@ import useDataState from '../zustand/dataState'
 
 function MissionList(props) {
   const { mode } = useSelector(state => state.setting)
+
   const { t } = useTranslation()
   const { missionsData } = useDataState()
 
@@ -213,9 +215,14 @@ function MissionList(props) {
                           // eslint-disable-next-line react/jsx-props-no-spreading
                           {...provided2.dragHandleProps}
                         >
-                          <Button onClick={() => setOpenSetting(item)} className={styles.gameCard}>
+                          <div
+                            role="button"
+                            tabIndex="0"
+                            onClick={() => setOpenSetting(item)}
+                            className={styles.card}
+                          >
                             <Mission missionData={item} />
-                          </Button>
+                          </div>
                         </div>
                       )}
                     </Draggable>
