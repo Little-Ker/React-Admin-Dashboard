@@ -41,12 +41,10 @@ export default function BasicSelect(props) {
           onChange={handleChange}
           defaultValue={''}
           renderValue={(selected) => {
-            console.log('selected', selected)
             if ((!multiple && !selected) || (multiple && selected?.length === 0)) {
               return <Typography sx={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{placeholder || t('請選擇')}</Typography>
             }
             if (multiple) {
-              console.log('value', value)
               return (
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                   {selected.map((cur) => {
@@ -68,7 +66,7 @@ export default function BasicSelect(props) {
           }}
           sx={{
             '& .MuiSelect-select': {
-              padding: (label) ? (multiple) ? '25px 14px 6px 14px' : '20px 14px 8px 15px' : '14px 14px',
+              padding: (label) ? (multiple) ? '25px 14px 6px 14px' : '23px 14px 6px 14px' : '14px 14px',
             },
             legend: {
               display: 'none',
@@ -78,7 +76,6 @@ export default function BasicSelect(props) {
             },
           }}
         >
-          {console.log('options', options)}
           {options.map(cur => (
             <MenuItem
               key={cur?.id}

@@ -19,6 +19,9 @@ function SettingView(props) {
   const { mode, mainColor } = useSelector(state => state.setting)
 
   const mainColorList = useMemo(() => [{
+    color: 'black',
+    name: 'Black',
+  }, {
     color: 'blue',
     name: 'Blue',
   }, {

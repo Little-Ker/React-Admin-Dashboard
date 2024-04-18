@@ -1,11 +1,12 @@
 import React from 'react'
-import { SupervisedUserCircle, VpnKey } from '@mui/icons-material'
+import { SupervisedUserCircle, VpnKey, Dashboard } from '@mui/icons-material'
 import ViewA from 'view/ViewA'
 import ViewB from 'view/ViewB'
+import TodoList from 'view/other/todoList'
 
 const routes = [
   {
-    category: 'MANAGEMENT',
+    category: 'Management',
     list: [{
       name: 'ViewB',
       to: '/viewB',
@@ -31,12 +32,12 @@ const routes = [
     }],
   },
   {
-    category: 'MANAGEMENT222',
+    category: 'Other',
     list: [{
-      name: 'ViewB',
-      to: '/viewB11',
-      icon: <SupervisedUserCircle />,
-      view: <ViewB />,
+      name: 'TodoList',
+      to: '/todoList',
+      icon: <Dashboard />,
+      view: <TodoList />,
     }],
   },
 ]

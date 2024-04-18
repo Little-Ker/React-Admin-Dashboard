@@ -48,6 +48,11 @@ function ImagePicker(props) {
               <p className={clsx(styles.textTip, !readonly && styles.showTextTip)}>{t('上傳圖片')}</p>
             </div>
           )}
+          {(imgSrc === '') && (
+            <div className={styles.photo}>
+              <p className={styles.textTip}>{t('上傳圖片')}</p>
+            </div>
+          )}
           <input
             type={'file'}
             accept="image/*"

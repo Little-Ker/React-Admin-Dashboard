@@ -43,9 +43,10 @@
 /* 客製化滾動條 */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 0;
+  border-radius: .5rem;
   background-color: #52595c;
 }
