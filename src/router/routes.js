@@ -1,8 +1,11 @@
 import React from 'react'
-import { SupervisedUserCircle, VpnKey, Dashboard } from '@mui/icons-material'
+import {
+  SupervisedUserCircle, VpnKey, Dashboard, Event
+} from '@mui/icons-material'
 import ViewA from 'view/ViewA'
 import ViewB from 'view/ViewB'
 import TodoList from 'view/other/todoList'
+import Calender from 'view/other/calender'
 
 const routes = [
   {
@@ -38,6 +41,11 @@ const routes = [
       to: '/todoList',
       icon: <Dashboard />,
       view: <TodoList />,
+    }, {
+      name: 'Calender',
+      to: '/calender',
+      icon: <Event />,
+      view: <Calender />,
     }],
   },
 ]
